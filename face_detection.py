@@ -20,7 +20,7 @@ for(x,y,w,h)in front_face_list:
 #X-Y coordinates of the frame 
     print("[x,y] = %d,%d[w,h] = %d,%d"%(x,y,w,h))
 #cut image
-    cut_img = origin_img[x:x+w, y:y+h]
+    cut_img = origin_img[y:y+h, x:x+w]
     cv2.imwrite(result_path, cut_img)
 #drow frame
     cv2.rectangle(origin_img,(x,y),(x+w,y+h),(0,0,255),thickness = 10)
