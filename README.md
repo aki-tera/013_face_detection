@@ -14,3 +14,9 @@ Library
 
 1. cv2
 0. matplotlib
+
+***
+This photo is from https://publicdomainq.net/.
+
+パブリックドメインQ：著作権フリー画像素材集
+https://publicdomainq.net/.
