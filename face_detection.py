@@ -13,17 +13,20 @@ grayscale_img = cv2.cvtColor(origin_img,cv2.COLOR_RGB2GRAY)
 cascade = cv2.CascadeClassifier(cascade_fp2)
 front_face_list = cascade.detectMultiScale(grayscale_img,minSize =(100,100))
 
-print(front_face_list)
 
-#There is a problem that processing is doubled if there are multiple frames
-for(x,y,w,h)in front_face_list:
-#X-Y coordinates of the frame 
+for temp in range(len(front_face_list)):
+    #X-Y coordinates of the frame
+    (x,y,w,h) = front_face_list[temp]
     print("[x,y] = %d,%d[w,h] = %d,%d"%(x,y,w,h))
+    
+    temp_origin_img =origin_img
+    temp_cut_img = origin_img[y:y+h, x:x+w]
+    
 #cut image
-    cut_img = origin_img[y:y+h, x:x+w]
-    cv2.imwrite(result_path, cut_img)
+    cv2.rectangle(temp_origin_img,(x,y),(x+w,y+h),(0,0,255),thickness = 10)
+    
 #drow frame
     cv2.rectangle(origin_img,(x,y),(x+w,y+h),(0,0,255),thickness = 10)
+    plt.imshow(cv2.cvtColor(temp_origin_img,cv2.COLOR_BGR2RGB))
     
-    plt.imshow(cv2.cvtColor(origin_img,cv2.COLOR_BGR2RGB))
     plt.show()
